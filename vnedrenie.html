@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ru" data-lang="ru"
+  data-title-ru="Клиент ушёл, пока считали – внедрение ИИ с замером | Сначала цифра"
+  data-title-en="The client left while you were calculating – AI rollout, measured first | Numbers First">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Клиент ушёл, пока считали – внедрение ИИ с замером | Сначала цифра</title>
+<meta name="description" content="Находим процесс, на котором команда теряет заказы, считаем его цену и запускаем ИИ рядом с человеком. Оплата – когда цифра дошла до порога.">
+<link rel="preload" href="fonts/TildaSans-Black.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l4.5 4.5L19.5 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="index.html"><span lang="ru">СНАЧАЛА<b>ЦИФРА</b></span><span lang="en">NUMBERS<b>FIRST</b></span></a>
+    <span class="spacer"></span>
+    <div class="lang" role="group" aria-label="Язык / Language">
+      <button type="button" data-set="ru" aria-pressed="true">RU</button>
+      <button type="button" data-set="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn small" href="#contact">
+      <span lang="ru">Разбор</span><span lang="en">Free review</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-top:clamp(2rem,5vw,4.5rem)">
+    <div class="wrap">
+      <div>
+        <h1>
+          <span lang="ru">Клиент ушёл, пока менеджер <span class="hl">считал</span></span>
+          <span lang="en">The client left while your manager was still <span class="hl">calculating</span></span>
+        </h1>
+        <p class="lead">
+          <span lang="ru">Найдём процесс, на котором команда теряет заказы, и посчитаем, сколько он стоит сейчас. Потом запустим ИИ рядом с сотрудником: рутину берёт он, решения остаются за человеком. Платить начинаете, когда цифра дошла до порога, о котором договорились заранее.</span>
+          <span lang="en">We find the process where your team loses orders and work out what it costs today. Then AI starts working next to your people: it takes the routine, people keep the decisions. You start paying once the number reaches a threshold we agreed on up front.</span>
+        </p>
+        <a class="btn" href="#contact">
+          <span lang="ru">Разобрать мой процесс – 20 минут</span>
+          <span lang="en">Review my process – 20 minutes</span>
+          <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+        <p class="note">
+          <span lang="ru">Бесплатно, онлайн, в Telegram. Говорим про одну задачу, а не про весь бизнес.</span>
+          <span lang="en">Free, online, via Telegram. One task, not your whole business.</span>
+        </p>
+      </div>
+
+      <figure class="frame">
+        <div class="slug"><span class="fno"><span lang="ru">Кадр 1</span><span lang="en">Frame 1</span></span><span lang="ru">Стройбаза · утро</span><span lang="en">Building supplies · morning</span></div>
+        <div class="screen scene">
+          <div class="chat">
+            <div class="head"><span class="av">ИП</span><span lang="ru">Игорь, прораб</span><span lang="en">Igor, site foreman</span><span class="st">WhatsApp</span></div>
+            <div class="clock num" data-from="0" data-to="2820" data-start="1500" data-dur="3800">
+              <svg class="ring" viewBox="0 0 140 70" preserveAspectRatio="none" aria-hidden="true"><path d="M70 4C30 2 4 14 6 36s34 32 70 30 60-12 58-34S104 2 62 6"/></svg>
+              <span class="face">00:00</span>
+              <span class="lbl"><span lang="ru">ответ не ушёл</span><span lang="en">no reply yet</span></span>
+            </div>
+            <div class="msg" data-beat="200"><span lang="ru">Добрый день! 40 мешков цемента М500 и доставка на Пушкина, 12 – сколько выйдет? Нужно на завтра</span><span lang="en">Hi! 40 bags of cement plus delivery to 12 Pushkin St – how much? Need it tomorrow</span><small>09:12</small></div>
+            <div class="msg out" data-beat="1100"><span lang="ru">Секунду, считаю</span><span lang="en">One sec, calculating</span><small>09:14</small></div>
+            <div class="msg sys" data-beat="2600"><span lang="ru">прайс, звонок на склад, доставка, скидка</span><span lang="en">price list, call the warehouse, delivery, discount</span></div>
+            <div class="msg" data-beat="5600"><span lang="ru">Спасибо, уже нашли у других</span><span lang="en">Thanks, we found it elsewhere</span><small>09:59</small></div>
+          </div>
+          <button class="replay" type="button"><span lang="ru">Повторить</span><span lang="en">Replay</span></button>
+        </div>
+        <dl class="dir">
+          <div><dt lang="ru">Действие</dt><dt lang="en">Action</dt><dd lang="ru">Заявка пришла. Менеджер ищет цену в трёх местах.</dd><dd lang="en">A request comes in. The manager hunts for the price in three places.</dd></div>
+          <div><dt lang="ru">Реплика</dt><dt lang="en">Line</dt><dd lang="ru">«Секунду, считаю» – «Уже нашли у других»</dd><dd lang="en">“One sec” – “Found it elsewhere”</dd></div>
+          <div><dt lang="ru">Хрон.</dt><dt lang="en">Time</dt><dd class="t num" lang="ru">47 мин</dd><dd class="t num" lang="en">47 min</dd></div>
+        </dl>
+        <p class="synthetic"><span lang="ru">Сцена собрана из слов собственников, это не реальный клиент.</span><span lang="en">The scene is built from what owners told us; not a real client.</span></p>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="ru">Как закрываем эту течь</span><span lang="en">How we fix the leak</span></h2>
+        <p><span lang="ru">ИИ ускоряет тот процесс, который у вас есть. Беспорядок он ускоряет тоже. Поэтому сначала цифра, потом ИИ.</span><span lang="en">AI speeds up whatever process you already have, mess included. So the number comes first, AI second.</span></p>
+      </div>
+      <div class="strip">
+        <figure class="frame reveal">
+          <div class="slug"><span class="fno"><span lang="ru">Кадр 2</span><span lang="en">Frame 2</span></span><span lang="ru">Замер</span><span lang="en">Measure</span></div>
+          <div class="screen"><div class="pane">
+            <div class="big num"><span lang="ru">47 мин</span><span lang="en">47 min</span></div>
+            <div class="cap"><span lang="ru">на один расчёт. Снимаем на ваших заявках за 5 рабочих дней.</span><span lang="en">per quote. Measured on your own requests over 5 working days.</span></div>
+            <div class="bars" aria-hidden="true"><i style="width:92%"></i><i style="width:64%"></i><i style="width:78%"></i><i class="m" style="width:100%"></i></div>
+          </div></div>
+          <dl class="dir">
+            <div><dt lang="ru">Действие</dt><dt lang="en">Action</dt><dd lang="ru">Записываем, как процесс идёт сейчас: время, ошибки, пропущенные заявки.</dd><dd lang="en">We record how the process runs today: time, errors, missed requests.</dd></div>
+            <div><dt lang="ru">Реплика</dt><dt lang="en">Line</dt><dd lang="ru">«Сколько это стоит нам в месяц?»</dd><dd lang="en">“What does this cost us a month?”</dd></div>
+          </dl>
+        </figure>
+        <figure class="frame reveal" data-delay="120">
+          <div class="slug"><span class="fno"><span lang="ru">Кадр 3</span><span lang="en">Frame 3</span></span><span lang="ru">Рядом с человеком</span><span lang="en">Side by side</span></div>
+          <div class="screen"><div class="pane dark">
+            <div class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Пришла заявка – ИИ готовит расчёт</span><span lang="en">Request comes in – AI drafts the quote</span></div>
+            <div class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Менеджер сверяет и отправляет</span><span lang="en">Manager checks and sends it</span></div>
+            <div class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Каждое расхождение – в правку</span><span lang="en">Every mismatch becomes a fix</span></div>
+          </div></div>
+          <dl class="dir">
+            <div><dt lang="ru">Действие</dt><dt lang="en">Action</dt><dd lang="ru">ИИ считает те же заявки параллельно. Клиенту пишет человек.</dd><dd lang="en">AI runs the same requests in parallel. A person still talks to the client.</dd></div>
+            <div><dt lang="ru">Реплика</dt><dt lang="en">Line</dt><dd lang="ru">«Тут скидку забыл – поправили»</dd><dd lang="en">“It missed the discount – fixed”</dd></div>
+          </dl>
+        </figure>
+        <figure class="frame reveal" data-delay="240">
+          <div class="slug"><span class="fno"><span lang="ru">Кадр 4</span><span lang="en">Frame 4</span></span><span lang="ru">Порог</span><span lang="en">Threshold</span></div>
+          <div class="screen"><div class="pane mark">
+            <div class="big num">80&nbsp;%</div>
+            <div class="cap"><span lang="ru">совпадение с ручным расчётом – пример порога. Его записываем до старта, вы его подписываете.</span><span lang="en">match with the manual quote – an example threshold. We write it down before we start, and you sign it.</span></div>
+          </div></div>
+          <dl class="dir">
+            <div><dt lang="ru">Действие</dt><dt lang="en">Action</dt><dd lang="ru">Цифра дошла до порога – начинается оплата. Не дошла – не платите.</dd><dd lang="en">The number hits the threshold – payment starts. It doesn’t – you don’t pay.</dd></div>
+            <div><dt lang="ru">Реплика</dt><dt lang="en">Line</dt><dd lang="ru">«Никаких “вроде стало лучше”»</dd><dd lang="en">“No ‘feels better’ – a number”</dd></div>
+          </dl>
+        </figure>
+        <figure class="frame reveal" data-delay="360">
+          <div class="slug"><span class="fno"><span lang="ru">Кадр 5</span><span lang="en">Frame 5</span></span><span lang="ru">В работе</span><span lang="en">In daily use</span></div>
+          <div class="screen"><div class="pane">
+            <div class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Рутина – у ИИ</span><span lang="en">Routine – to AI</span></div>
+            <div class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Торг и исключения – у менеджера</span><span lang="en">Haggling and exceptions – to the manager</span></div>
+            <div class="tick"><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Раз в месяц смотрим цифры вместе</span><span lang="en">Monthly review of the numbers together</span></div>
+          </div></div>
+          <dl class="dir">
+            <div><dt lang="ru">Действие</dt><dt lang="en">Action</dt><dd lang="ru">Решение работает там, где уже работает команда: мессенджер, почта, учёт.</dd><dd lang="en">The solution lives where the team already works: messengers, email, your accounting system.</dd></div>
+            <div><dt lang="ru">Реплика</dt><dt lang="en">Line</dt><dd lang="ru">«Менеджер остаётся. Уходит рутина»</dd><dd lang="en">“The manager stays. The busywork goes”</dd></div>
+          </dl>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="calc" id="calc">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="ru">Сколько стоит ваша рутина</span><span lang="en">What your busywork costs</span></h2>
+        <p><span lang="ru">Подвигайте ползунки под свой процесс. Это и есть цифра «до», с которой начинается работа.</span><span lang="en">Move the sliders to match your process. That is your “before” number – where the work starts.</span></p>
+      </div>
+      <div class="calc-grid">
+        <form class="fields" onsubmit="return false">
+          <div class="field">
+            <label for="ppl"><span><span lang="ru">Сколько человек делают эту работу</span><span lang="en">People doing this work</span></span><output id="ppl-o" class="num">3</output></label>
+            <input id="ppl" type="range" min="1" max="15" step="1" value="3">
+          </div>
+          <div class="field">
+            <label for="hrs"><span><span lang="ru">Часов в день у каждого</span><span lang="en">Hours a day each</span></span><output id="hrs-o" class="num">2</output></label>
+            <input id="hrs" type="range" min="0.5" max="8" step="0.5" value="2">
+            <small><span lang="ru">Перенос заявок в учёт, расчёт цены, КП, счета, ответы на одни и те же вопросы.</span><span lang="en">Copying orders into the system, pricing, quotes, invoices, answering the same questions.</span></small>
+          </div>
+          <div class="field">
+            <label for="rate"><span><span lang="ru">Час сотрудника обходится вам в</span><span lang="en">An hour of their time costs you</span></span><output id="rate-o" class="num">500 ₽</output></label>
+            <input id="rate" type="range" min="200" max="3000" step="50" value="500">
+          </div>
+        </form>
+        <div class="result" aria-live="polite">
+          <span class="slug"><span lang="ru">Кадр 6 · цифра «до»</span><span lang="en">Frame 6 · the “before” number</span></span>
+          <div class="sum num" id="sum-y">0</div>
+          <p><span lang="ru">в год, или <b id="sum-m" class="num">0</b> в месяц – только на часах. Клиенты, которые ушли, пока считали, сюда не входят.</span><span lang="en">a year, or <b id="sum-m-en" class="num">0</b> a month – hours alone. Clients lost while you were calculating aren’t counted.</span></p>
+          <a class="btn" href="#contact">
+            <span lang="ru">Принести эту цифру на разбор</span><span lang="en">Bring this number to a review</span>
+            <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="ru">Как идёт работа</span><span lang="en">How it works</span></h2>
+        <p><span lang="ru">Один процесс, одна цифра. Следующий процесс – по тому же образцу.</span><span lang="en">One process, one number. The next process follows the same pattern.</span></p>
+      </div>
+      <div class="sheet-steps">
+        <div class="reveal">
+          <span class="when"><span lang="ru">Разбор · 20 минут</span><span lang="en">Review · 20 minutes</span></span>
+          <h3><span lang="ru">Выбираем одну задачу</span><span lang="en">We pick one task</span></h3>
+          <p><span lang="ru">Вы рассказываете, где теряются заявки или время. Мы задаём вопросы и честно говорим, подходит ли задача ИИ.</span><span lang="en">You tell us where requests or hours get lost. We ask questions and tell you straight whether AI fits the task.</span></p>
+          <span class="pay"><span lang="ru">Бесплатно</span><span lang="en">Free</span></span>
+        </div>
+        <div class="reveal" data-delay="120">
+          <span class="when"><span lang="ru">Пилот</span><span lang="en">Pilot</span></span>
+          <h3><span lang="ru">Замер и запуск рядом с человеком</span><span lang="en">Measure, then run alongside your people</span></h3>
+          <p><span lang="ru">Записываем процесс и цифру «до». ИИ работает параллельно с сотрудником, расхождения правим в тот же день.</span><span lang="en">We record the process and the “before” number. AI runs in parallel with your employee; mismatches get fixed the same day.</span></p>
+          <span class="pay"><span lang="ru">Порог, срок и условия выхода – в договоре до старта</span><span lang="en">Threshold, timeline and exit terms – signed before we start</span></span>
+        </div>
+        <div class="reveal" data-delay="240">
+          <span class="when"><span lang="ru">Каждый месяц</span><span lang="en">Every month</span></span>
+          <h3><span lang="ru">Решение в работе, мы на связи</span><span lang="en">In daily use, we stay on call</span></h3>
+          <p><span lang="ru">Цифра на пороге – решение остаётся, мы его сопровождаем и обновляем. Смотрим цифры вместе и выбираем следующий процесс.</span><span lang="en">Once the number holds, the solution stays; we maintain and update it. We review the numbers together and pick the next process.</span></p>
+          <span class="pay"><span lang="ru">Оплата помесячно – после порога</span><span lang="en">Monthly payment – after the threshold</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="ru">Что обычно спрашивают</span><span lang="en">What owners usually ask</span></h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><span lang="ru">Бот наговорит клиенту лишнего</span><span lang="en">The bot will say something wrong to a client</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p lang="ru">Сначала ИИ работает только с менеджером: готовит расчёт, а отправляет человек. Писать клиенту напрямую он начнёт, только когда вы сами решите, что можно.</p>
+          <p lang="en">At first AI only works with your manager: it drafts, a person sends. It writes to clients directly only when you decide it’s ready.</p>
+        </details>
+        <details>
+          <summary><span lang="ru">Сколько это реально сэкономит?</span><span lang="en">How much will this actually save?</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p lang="ru">Не знаем, пока не посчитаем. Поэтому первым делом замер. Обещать экономию до замера – значит гадать.</p>
+          <p lang="en">We don’t know until we measure. That’s why measuring comes first. Promising savings before that is guessing.</p>
+        </details>
+        <details>
+          <summary><span lang="ru">Проще нанять ещё одного человека</span><span lang="en">It’s easier to hire one more person</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p lang="ru">Может быть. Посчитайте процесс, прежде чем открывать вакансию: часто новому человеку достаётся та же рутина.</p>
+          <p lang="en">Maybe. Measure the process before you post the job: the new hire often inherits the same busywork.</p>
+        </details>
+        <details>
+          <summary><span lang="ru">У нас всё нестандартно</span><span lang="en">Nothing about our business is standard</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p lang="ru">Нестандартное остаётся человеку. ИИ берёт повторяющуюся часть – ту, что каждый день одинаковая.</p>
+          <p lang="en">The unusual cases stay with people. AI takes the repeating part – the work that looks the same every day.</p>
+        </details>
+        <details>
+          <summary><span lang="ru">Купим готовый сервис</span><span lang="en">We’ll just buy an off-the-shelf tool</span><svg aria-hidden="true"><use href="#i-plus"/></svg></summary>
+          <p lang="ru">Если под вашу задачу есть готовая коробка, мы скажем об этом на разборе – берите её. Мы нужны там, где коробки нет: заказы из мессенджеров в учёт, расчёт цены, КП, счета, отчёты.</p>
+          <p lang="en">If a ready-made tool fits, we’ll say so on the call – go with it. We’re useful where no box exists: orders from messengers into your system, pricing, quotes, invoices, reports.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="final" id="contact">
+    <div class="wrap">
+      <div>
+        <h2><span lang="ru">Одна задача. 20&nbsp;минут. Честный ответ.</span><span lang="en">One task. 20&nbsp;minutes. A straight answer.</span></h2>
+        <p><span lang="ru">Расскажите, на чём команда теряет время или заказы. Скажем, подходит ли это ИИ и что замерить первым.</span><span lang="en">Tell us where your team loses time or orders. We’ll tell you whether AI fits and what to measure first.</span></p>
+        <p class="duo"><span lang="ru">Пишете Екатерине: она ведёт разговор и договор. Техническую часть делает Роман: замер, сборка, сопровождение.</span><span lang="en">You write to Ekaterina: she runs the conversation and the contract. Roman does the technical side: measuring, building, upkeep.</span></p>
+      </div>
+      <div>
+        <ul>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Онлайн, в Telegram</span><span lang="en">Online, via Telegram</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Без презентаций и продаж в лоб</span><span lang="en">No slide decks, no hard sell</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span lang="ru">Не подходит – так и скажем</span><span lang="en">If it doesn’t fit, we’ll say so</span></li>
+        </ul>
+        <p style="margin-top:1.4rem"><a class="btn" href="https://t.me/aieseia"><span lang="ru">Записаться на разбор</span><span lang="en">Book a free review</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><span lang="ru">Сначала цифра · Екатерина и Роман · внедрение ИИ с замером</span><span lang="en">Numbers First · Ekaterina &amp; Roman · AI rollout, measured first</span></span>
+    <span><a href="https://t.me/aieseia">Telegram</a></span>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script>
+(function () {
+  var ppl = document.getElementById("ppl"), hrs = document.getElementById("hrs"), rate = document.getElementById("rate");
+  function presets(lang) {
+    if (lang === "en") { rate.min = 5; rate.max = 80; rate.step = 1; if (+rate.value > 80) rate.value = 15; }
+    else { rate.min = 200; rate.max = 3000; rate.step = 50; if (+rate.value < 200) rate.value = 500; }
+  }
+  function calc() {
+    var lang = NB.lang();
+    var month = +ppl.value * +hrs.value * +rate.value * 22;
+    document.getElementById("ppl-o").textContent = ppl.value;
+    document.getElementById("hrs-o").textContent = String(hrs.value).replace(".", lang === "ru" ? "," : ".");
+    document.getElementById("rate-o").textContent = NB.money(+rate.value, lang);
+    document.getElementById("sum-y").textContent = NB.money(month * 12, lang);
+    document.getElementById("sum-m").textContent = NB.money(month, lang);
+    document.getElementById("sum-m-en").textContent = NB.money(month, lang);
+  }
+  [ppl, hrs, rate].forEach(function (el) { el.addEventListener("input", calc); });
+  NB.onLang(function (l) { presets(l); calc(); });
+  presets(NB.lang()); calc();
+})();
+</script>
+</body>
+</html>
