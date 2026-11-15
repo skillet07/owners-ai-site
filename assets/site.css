@@ -82,7 +82,12 @@ h1, h2, h3 { font-weight: 900; line-height: 1.03; letter-spacing: -.02em; text-w
 h1 { font-size: clamp(2.3rem, 1.4rem + 3.6vw, 4.6rem); }
 h2 { font-size: clamp(1.8rem, 1.2rem + 2.4vw, 3.2rem); }
 h3 { font-size: clamp(1.2rem, 1rem + .7vw, 1.55rem); letter-spacing: -.01em; }
-h1 .hl, h2 .hl { box-shadow: inset 0 -.32em 0 rgba(255,107,44,.55); }
+h1 .hl, h2 .hl {
+  background: linear-gradient(100deg, rgba(255,107,44,.5), rgba(255,107,44,.62) 60%, rgba(255,107,44,.5)) no-repeat 0 92% / var(--hlw, 100%) .34em;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  transition: background-size 1s var(--ease);
+}
+.js .hl:not(.in) { --hlw: 0%; }
 .lead { font-size: clamp(1.1rem, 1rem + .45vw, 1.35rem); max-width: 34ch; margin: 1.2rem 0 1.8rem; color: var(--ink); }
 .hero .note { margin-top: 1rem; font-size: .92rem; color: var(--muted); max-width: 40ch; }
 
@@ -312,4 +317,62 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
   .toc .screen { aspect-ratio: 16 / 9; }
   .frame.tall .screen:has(> .deal) { aspect-ratio: auto; }
   .screen > .pane.deal { position: relative; padding-top: 5.4rem; }
+}
+
+/* ---------- динамика: сетка приводки, подпись, линия шагов ---------- */
+.grid-bg { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+
+.sigline { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap; }
+.sigpad {
+  position: relative; display: block; width: 168px; height: 50px; flex: none;
+  border-bottom: 1.5px solid var(--ink); cursor: crosshair; touch-action: none;
+}
+.sigpad svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.sigpad path { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sigpad .auto { stroke-dasharray: 1; stroke-dashoffset: 0; }
+.scene.armed .row.sign:not(.on) .sigpad .auto { stroke-dashoffset: 1; }
+.scene.armed .row.sign.on .sigpad .auto { animation: sign-draw 1.5s cubic-bezier(.45,.05,.35,1) both .15s; }
+@keyframes sign-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.sigpad.user .auto { display: none; }
+.sigpad:hover { background: linear-gradient(transparent 70%, rgba(255,107,44,.08)); }
+.row.sign .ok { transition: transform .45s var(--ease), opacity .3s; }
+.scene.armed .row.sign:not(.on) .ok, .scene.armed .row.sign.on:not(.signed) .ok { transform: scale(.3); opacity: 0; }
+.scene.armed .row.sign.signed .ok { transform: none; opacity: 1; }
+.row.sign .ok.pop { animation: ok-pop .5s var(--ease); }
+@keyframes ok-pop { 0% { transform: scale(.4); } 60% { transform: scale(1.18); } 100% { transform: none; } }
+.sighint { font-size: .78rem; font-weight: 700; color: var(--mark-ink); letter-spacing: .02em; opacity: 0; transition: opacity .4s; }
+.row.sign.signed .sighint, .sigpad:focus-within + .ok + .sighint { opacity: 1; }
+.sigpad.user ~ .sighint { opacity: 0; }
+
+/* линия шагов: идёт по верхней кромке листа по мере прокрутки */
+.sheet-steps { position: relative; --p: 1; }
+.sheet-steps::before {
+  content: ""; position: absolute; left: -2px; right: -2px; top: -2px; height: 5px; background: var(--mark);
+  transform-origin: left; transform: scaleX(var(--p)); z-index: 1;
+}
+.sheet-steps > div { transition: background-color .5s var(--ease); }
+.js .sheet-steps > div .when { transition: color .4s; }
+.js .sheet-steps > div:not(.lit) .when { color: var(--muted); }
+.sheet-steps > div.lit { background: linear-gradient(rgba(255,107,44,.07), transparent 55%); }
+
+/* карточки ситуаций: номер обводится маркером */
+.toc .fno { position: relative; display: inline-grid; place-items: center; min-width: 1.6em; }
+.toc .fno::after {
+  content: ""; position: absolute; inset: -.3em -.45em; border: 2px solid var(--mark); border-radius: 50% 45% 55% 48%;
+  transform: rotate(-8deg); clip-path: inset(0 100% 0 0); transition: clip-path .5s var(--ease);
+}
+.toc a:hover .fno::after, .toc a:focus-visible .fno::after { clip-path: inset(0 0 0 0); }
+.toc .dir dd { transition: color .25s; }
+.toc a:hover .dir dd { color: var(--mark-ink); }
+
+@media (max-width: 980px) {
+  .sheet-steps { margin-left: 14px; }
+  .sheet-steps::before { left: -14px; right: auto; top: 0; bottom: 0; width: 3px; height: auto; transform-origin: top; transform: scaleY(var(--p)); }
+  .sheet-steps::after { content: ""; position: absolute; left: -14px; top: 0; bottom: 0; width: 3px; background: var(--rule); z-index: 0; }
+}
+.row.sign { align-items: center; }
+@media (prefers-reduced-motion: reduce) {
+  .js .hl:not(.in) { --hlw: 100%; }
+  .scene.armed .row.sign .sigpad .auto { stroke-dashoffset: 0; animation: none; }
+  .scene.armed .row.sign .ok { transform: none; opacity: 1; }
 }
