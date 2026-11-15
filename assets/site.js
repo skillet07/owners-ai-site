@@ -309,8 +309,109 @@
     }, 350);
   }
 
+  /* ---------- квиз: кейсы по отраслям (логика бота, kejsy.py) ---------- */
+  function initQuiz() {
+    var q = document.querySelector(".quiz");
+    var data = window.NB_CASES;
+    if (!q || !data) return;
+    var PAGE = 3;
+    var st = { ind: null, pain: null, shown: 0 };
+    var ARROW = '<svg aria-hidden="true"><use href="#i-arrow"/></svg>';
+    var T = {
+      ru: { best: "Лучшие кейсы отрасли", casesOf: function (n) { return n + " " + plural(n, ["кейс", "кейса", "кейсов"]); },
+            title: function (ind, pain) { return ind + " · " + (pain || "лучшие кейсы"); },
+            filled: function (n) { return "Под эту задачу в отрасли " + (n === 1 ? "один кейс" : n + " кейса") + ". Ниже добавили самые сильные кейсы отрасли."; },
+            res: "Результат" },
+      en: { best: "Best cases in this industry", casesOf: function (n) { return n + (n === 1 ? " case" : " cases"); },
+            title: function (ind, pain) { return ind + " · " + (pain || "best cases"); },
+            filled: function (n) { return "This industry has " + (n === 1 ? "one case" : n + " cases") + " for this task. We’ve added the strongest cases from the industry below."; },
+            res: "Result" }
+    };
+    function plural(n, f) { var a = n % 10, b = n % 100; return a === 1 && b !== 11 ? f[0] : a >= 2 && a <= 4 && (b < 10 || b >= 20) ? f[1] : f[2]; }
+    function L() { return NB.lang() === "en" ? "en" : "ru"; }
+    function nums(h) { return h.replace(/([+−-]?\d[\d\u00a0 ]*(?:[.,]\d+)?\s?(?:%|×|раза?|times)?)/g, '<span class="n">$1</span>'); }
+    function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
+    function ind() { return data.industries.filter(function (i) { return i.id === st.ind; })[0]; }
+    function painById(id) { return data.pains.filter(function (p) { return p.id === id; })[0]; }
+    function selection() {
+      var I = ind(); if (!I) return null;
+      if (st.pain === "all") return { cases: I.cases, painCount: I.cases.length, filled: false };
+      var m = I.cases.filter(function (c) { return c.pains.indexOf(st.pain) > -1; });
+      if (m.length >= PAGE) return { cases: m, painCount: m.length, filled: false };
+      var rest = I.cases.filter(function (c) { return m.indexOf(c) === -1; });
+      return { cases: m.concat(rest), painCount: m.length, filled: true };
+    }
+    var panels = q.querySelectorAll(".qpanel");
+    function show(step, focus) {
+      q.setAttribute("data-step", String(step));
+      panels.forEach(function (p) {
+        var on = +p.dataset.panel === step;
+        p.hidden = !on;
+        if (on && !reduce) { p.classList.remove("enter"); void p.offsetWidth; p.classList.add("enter"); }
+      });
+      q.querySelector('[data-go="2"]').disabled = !st.ind;
+      q.querySelector('[data-go="3"]').disabled = !st.pain;
+      var r = q.getBoundingClientRect();
+      if (focus && (r.top < 60 || r.top > window.innerHeight * 0.6)) {
+        window.scrollTo({ top: window.scrollY + r.top - 80, behavior: reduce ? "auto" : "smooth" });
+      }
+      if (focus) { var h = q.querySelector('.qpanel[data-panel="' + step + '"] .qq'); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }
+    }
+    function renderInd() {
+      var l = L();
+      q.querySelector('[data-list="ind"]').innerHTML = data.industries.map(function (i) {
+        return '<button type="button" data-ind="' + i.id + '" aria-pressed="' + (i.id === st.ind) + '"><span>' + esc(i[l]) + "</span><small>" + T[l].casesOf(i.cases.length) + "</small></button>";
+      }).join("");
+    }
+    function renderPains() {
+      var I = ind(); if (!I) return;
+      var l = L();
+      var html = '<button type="button" class="best" data-pain="all"><span>' + T[l].best + "</span>" + ARROW + "</button>";
+      data.pains.forEach(function (p) {
+        var n = I.cases.filter(function (c) { return c.pains.indexOf(p.id) > -1; }).length;
+        if (!n) return;
+        html += '<button type="button" data-pain="' + p.id + '" aria-pressed="' + (p.id === st.pain) + '"><span>' + esc(p[l]) + "</span><small>" + T[l].casesOf(n) + "</small></button>";
+      });
+      q.querySelector('[data-list="pain"]').innerHTML = html;
+    }
+    function caseHTML(c, i) {
+      var l = L();
+      return '<article class="qcase" style="--i:' + i + '"><span class="who">' + esc(c.who[l]) + '</span><p class="what">' + esc(c.what[l]) +
+        '</p><p class="res"><b>' + T[l].res + "</b>" + nums(esc(c.result[l])) + "</p></article>";
+    }
+    function renderCases(append) {
+      var sel = selection(); if (!sel) return;
+      var l = L(), I = ind(), P = st.pain === "all" ? null : painById(st.pain);
+      q.querySelector("[data-title]").textContent = T[l].title(I[l], P ? P[l] : null);
+      var box = q.querySelector('[data-list="cases"]');
+      var from = append ? box.querySelectorAll(".qcase").length : 0;
+      var slice = sel.cases.slice(from, st.shown);
+      var html = slice.map(function (c, k) { return caseHTML(c, append ? k : k); }).join("");
+      if (append) box.insertAdjacentHTML("beforeend", html);
+      else box.innerHTML = (sel.filled ? '<p class="qnote" style="grid-column:1/-1">' + T[l].filled(sel.painCount) + "</p>" : "") + html;
+      q.querySelector("[data-more]").hidden = st.shown >= sel.cases.length;
+    }
+    function rerender() {
+      renderInd(); renderPains();
+      var l = L();
+      var pi = q.querySelector('[data-pick="ind"]'), pp = q.querySelector('[data-pick="pain"]');
+      pi.textContent = ind() ? ind()[l] : "";
+      pp.textContent = st.pain === "all" ? T[l].best : st.pain ? painById(st.pain)[l] : "";
+      if (st.pain) renderCases(false);
+    }
+    q.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b || !q.contains(b)) return;
+      if (b.dataset.ind) { st.ind = b.dataset.ind; st.pain = null; st.shown = 0; rerender(); show(2, true); }
+      else if (b.dataset.pain) { st.pain = b.dataset.pain; st.shown = PAGE; rerender(); show(3, true); }
+      else if (b.hasAttribute("data-more")) { st.shown += PAGE; renderCases(true); }
+      else if (b.dataset.go) { show(+b.dataset.go, true); }
+    });
+    NB.onLang(rerender);
+    rerender(); show(1, false);
+  }
+
   var _boot = boot;
-  boot = function () { _boot(); initGrid(); initMarkers(); initSteps(); initPads(); };
+  boot = function () { _boot(); initGrid(); initMarkers(); initSteps(); initPads(); initQuiz(); };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

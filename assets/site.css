@@ -376,3 +376,68 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
   .scene.armed .row.sign .sigpad .auto { stroke-dashoffset: 0; animation: none; }
   .scene.armed .row.sign .ok { transform: none; opacity: 1; }
 }
+
+/* ---------- кейсы по отраслям: квиз ---------- */
+.navlink { font-weight: 700; font-size: .92rem; text-decoration: none; padding: .3rem .1rem; border-bottom: 2px solid transparent; transition: border-color .2s, color .2s; }
+.navlink:hover { border-color: var(--mark); }
+.cases .sec-head h2 { max-width: 16ch; }
+.quiz { border: 2px solid var(--sheet); background: #202020; }
+.qsteps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 2px solid var(--sheet); }
+.qsteps li + li { border-left: 1px solid #4a4743; }
+.qsteps button {
+  width: 100%; height: 100%; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+  font: inherit; font-weight: 700; font-size: .95rem; text-align: left; color: #b9b5ae;
+  background: transparent; border: 0; padding: .8rem 1rem; cursor: pointer; transition: color .2s, background .2s;
+}
+.qsteps button:disabled { cursor: default; opacity: .55; }
+.qsteps button:not(:disabled):hover { color: var(--sheet); background: #2a2a2a; }
+.qsteps b { display: inline-grid; place-items: center; width: 1.7rem; height: 1.7rem; border: 2px solid currentColor; font-size: .85rem; flex: none; transition: background .25s, color .25s, border-color .25s; }
+.qsteps .qpick { font-style: normal; font-weight: 500; font-size: .85rem; color: var(--mark); flex-basis: 100%; padding-left: 2.3rem; min-height: 0; }
+.qsteps .qpick:empty { display: none; }
+.quiz[data-step="1"] [data-go="1"], .quiz[data-step="2"] [data-go="2"], .quiz[data-step="3"] [data-go="3"] { color: var(--sheet); }
+.quiz[data-step="1"] [data-go="1"] b, .quiz[data-step="2"] [data-go="2"] b, .quiz[data-step="3"] [data-go="3"] b { background: var(--mark); border-color: var(--mark); color: var(--ink); }
+.qpanel { padding: clamp(1rem, 2.4vw, 1.8rem); }
+.js .qpanel.enter { animation: q-enter .45s var(--ease) both; }
+@keyframes q-enter { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+.qq { margin: 0 0 1rem; font-weight: 900; font-size: clamp(1.2rem, 1rem + .8vw, 1.6rem); line-height: 1.15; color: var(--sheet); }
+.qgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: .6rem; }
+.qgrid button {
+  display: flex; justify-content: space-between; align-items: center; gap: .8rem; text-align: left;
+  font: inherit; font-weight: 700; line-height: 1.25; color: var(--sheet); background: #262626;
+  border: 2px solid #4a4743; padding: .85rem .95rem; min-height: 58px; cursor: pointer;
+  transition: border-color .2s, background .2s, transform .25s var(--ease);
+}
+.qgrid button:hover { border-color: var(--mark); background: #2a211c; }
+.qgrid button:active { transform: scale(.98); }
+.qgrid button[aria-pressed="true"] { border-color: var(--mark); background: #2a211c; }
+.qgrid button small { font-weight: 500; font-size: .8rem; color: #b9b5ae; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qgrid button svg { width: 1.1em; height: 1.1em; flex: none; color: var(--mark); transition: transform .25s var(--ease); }
+.qgrid button:hover svg { transform: translateX(3px); }
+.qgrid-pains { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.qgrid button.best { background: var(--mark); color: var(--ink); border-color: var(--mark); }
+.qgrid button.best small, .qgrid button.best svg { color: var(--ink); }
+.qgrid button.best:hover { background: #ff8450; }
+.qcases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.qcase { display: flex; flex-direction: column; gap: .7rem; border: 2px solid #4a4743; background: #262626; padding: 1rem 1.05rem 1.1rem; }
+.js .qcase { animation: q-case .55s var(--ease) both; animation-delay: calc(var(--i, 0) * 90ms); }
+@keyframes q-case { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.qcase .who { font-size: .74rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #b9b5ae; line-height: 1.3; }
+.qcase .what { margin: 0; color: #dcd8d2; font-size: .98rem; line-height: 1.42; }
+.qcase .res { margin: auto 0 0; padding-top: .7rem; border-top: 1px dashed #6a665f; font-weight: 700; color: var(--sheet); line-height: 1.35; font-size: 1rem; }
+.qcase .res b { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--mark); margin-bottom: .25rem; }
+.qnote { margin: 0 0 1rem; color: #b9b5ae; font-size: .92rem; }
+.qmore { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin-top: 1.2rem; }
+.qmore .btn.ghost { color: var(--sheet); border-color: #8a857e; }
+.qmore .btn.ghost:hover { background: #2a2a2a; border-color: var(--sheet); }
+.qmore .btn:not(.ghost) { margin-left: auto; }
+.qsrc { margin: 1rem 0 0; font-size: .82rem; color: #b9b5ae; max-width: 80ch; }
+@media (max-width: 980px) { .qcases { grid-template-columns: 1fr; } .qmore .btn:not(.ghost) { margin-left: 0; } }
+@media (max-width: 600px) {
+  .top .navlink { font-size: .82rem; }
+  .qsteps button { padding: .6rem .55rem; font-size: .82rem; gap: .4rem; }
+  .qsteps .qpick { padding-left: 0; font-size: .75rem; }
+  .qsteps b { width: 1.45rem; height: 1.45rem; }
+}
+@media (max-width: 420px) { .top .navlink span[lang] { font-size: 0; } .top .navlink span[lang]::after { font-size: .82rem; } html[data-lang="ru"] .top .navlink span[lang="ru"]::after { content: "Кейсы"; } html[data-lang="en"] .top .navlink span[lang="en"]::after { content: "Cases"; } }
+.qcase .res .n { color: var(--mark); white-space: nowrap; }
+@media (max-width: 600px) { .qsteps .qpick { display: none; } .qsteps button { justify-content: flex-start; } }

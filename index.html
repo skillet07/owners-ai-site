@@ -22,6 +22,7 @@
   <div class="wrap">
     <a class="logo" href="index.html"><span lang="ru">СНАЧАЛА<b>ЦИФРА</b></span><span lang="en">NUMBERS<b>FIRST</b></span></a>
     <span class="spacer"></span>
+    <a class="navlink" href="#cases"><span lang="ru">Кейсы по отраслям</span><span lang="en">Cases by industry</span></a>
     <div class="lang" role="group" aria-label="Язык / Language">
       <button type="button" data-set="ru" aria-pressed="true">RU</button>
       <button type="button" data-set="en" aria-pressed="false">EN</button>
@@ -107,6 +108,41 @@
     </div>
   </section>
 
+  <section class="calc cases" id="cases">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2><span lang="ru">Что ИИ уже делает в&nbsp;вашей отрасли</span><span lang="en">What AI already does in&nbsp;your industry</span></h2>
+        <p><span lang="ru">Реальные внедрения у малого и среднего бизнеса. Выберите отрасль и что болит – покажем, как это уже решили другие и с какими цифрами.</span><span lang="en">Real rollouts at small and mid-sized companies. Pick your industry and what hurts, and see how others already solved it, with numbers.</span></p>
+      </div>
+      <div class="quiz" data-step="1">
+        <ol class="qsteps" aria-label="Шаги / Steps">
+          <li><button type="button" data-go="1"><b>1</b><span lang="ru">Отрасль</span><span lang="en">Industry</span><em class="qpick" data-pick="ind"></em></button></li>
+          <li><button type="button" data-go="2"><b>2</b><span lang="ru">Что болит</span><span lang="en">What hurts</span><em class="qpick" data-pick="pain"></em></button></li>
+          <li><button type="button" data-go="3"><b>3</b><span lang="ru">Кейсы</span><span lang="en">Cases</span></button></li>
+        </ol>
+        <div class="qpanel" data-panel="1">
+          <p class="qq"><span lang="ru">Какая у вас отрасль?</span><span lang="en">What’s your industry?</span></p>
+          <div class="qgrid" data-list="ind"></div>
+        </div>
+        <div class="qpanel" data-panel="2" hidden>
+          <p class="qq"><span lang="ru">Что сейчас больше всего мешает?</span><span lang="en">What gets in the way most right now?</span></p>
+          <div class="qgrid qgrid-pains" data-list="pain"></div>
+        </div>
+        <div class="qpanel" data-panel="3" hidden>
+          <p class="qq" data-title></p>
+          <div class="qcases" data-list="cases" aria-live="polite"></div>
+          <div class="qmore">
+            <button type="button" class="btn ghost small" data-more><span lang="ru">Ещё 3 кейса</span><span lang="en">3 more cases</span></button>
+            <button type="button" class="btn ghost small" data-go="1"><span lang="ru">Другая отрасль</span><span lang="en">Another industry</span></button>
+            <a class="btn" href="https://t.me/aieseia"><span lang="ru">Хочу так же – на разбор</span><span lang="en">I want this – book a review</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <noscript><p class="qq">Кейсы открываются с включённым JavaScript. / Cases need JavaScript.</p></noscript>
+      </div>
+      <p class="qsrc"><span lang="ru">Кейсы из открытых источников: компании сами рассказывали о внедрении. Цифры – как их назвала компания. Названия компаний убрали.</span><span lang="en">Cases come from public sources: the companies described their rollouts themselves. Figures are as the company stated them; rouble amounts converted approximately. Company names removed.</span></p>
+    </div>
+  </section>
+
   <section style="padding-top:0">
     <div class="wrap">
       <div class="sec-head">
@@ -183,6 +219,7 @@
   </div>
 </footer>
 
+<script src="assets/cases.js"></script>
 <script src="assets/site.js"></script>
 </body>
 </html>
