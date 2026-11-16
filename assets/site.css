@@ -269,7 +269,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
   .sheet-steps > div:last-child { border-bottom: 0; }
 }
 @media (max-width: 600px) {
-  .top .btn.small { display: none; }
+  .top .navlink { display: none; }
+  .top .btn.small { padding: .45rem .7rem; }
   .strip { grid-template-columns: 1fr; }
   .dir { grid-template-columns: 1fr 1fr; }
   .dir > div:last-child { grid-column: 1 / -1; border-top: 1px solid var(--rule); }
@@ -441,3 +442,9 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
 @media (max-width: 420px) { .top .navlink span[lang] { font-size: 0; } .top .navlink span[lang]::after { font-size: .82rem; } html[data-lang="ru"] .top .navlink span[lang="ru"]::after { content: "Кейсы"; } html[data-lang="en"] .top .navlink span[lang="en"]::after { content: "Cases"; } }
 .qcase .res .n { color: var(--mark); white-space: nowrap; }
 @media (max-width: 600px) { .qsteps .qpick { display: none; } .qsteps button { justify-content: flex-start; } }
+@media (max-width: 420px) {
+  .top .wrap { gap: .6rem; }
+  .logo { font-size: .92rem; letter-spacing: 0; }
+  .lang button { padding-inline: .5rem; }
+  .top .btn.small { padding: .4rem .55rem; font-size: .85rem; }
+}
