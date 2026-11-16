@@ -450,3 +450,14 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
 }
 .qgrid a.route { text-decoration: none; border-style: dashed; }
 .qgrid a.route small { margin-left: auto; }
+/* Лента кадров: текст не выходит за рамку, поля режиссёра заканчиваются на одной линии */
+.strip .frame { display: flex; flex-direction: column; }
+.strip .screen { display: flex; container-type: inline-size; }
+.strip .screen > .pane { position: relative; inset: auto; flex: 1; }
+.strip .pane .big { font-size: clamp(1.4rem, 15cqi, 2.6rem); }
+.strip .pane .big.words { font-size: clamp(1.1rem, 8.5cqi, 1.8rem); line-height: 1.12; }
+.strip .dir { flex: 1; }
+@supports (grid-template-rows: subgrid) {
+  .strip .frame { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
+  .strip .frame .slug { align-self: end; }
+}
