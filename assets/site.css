@@ -402,18 +402,18 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
 @keyframes q-enter { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
 .qq { margin: 0 0 1rem; font-weight: 900; font-size: clamp(1.2rem, 1rem + .8vw, 1.6rem); line-height: 1.15; color: var(--sheet); }
 .qgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: .6rem; }
-.qgrid button {
+.qgrid button, .qgrid a.route {
   display: flex; justify-content: space-between; align-items: center; gap: .8rem; text-align: left;
   font: inherit; font-weight: 700; line-height: 1.25; color: var(--sheet); background: #262626;
   border: 2px solid #4a4743; padding: .85rem .95rem; min-height: 58px; cursor: pointer;
   transition: border-color .2s, background .2s, transform .25s var(--ease);
 }
-.qgrid button:hover { border-color: var(--mark); background: #2a211c; }
+.qgrid button:hover, .qgrid a.route:hover { border-color: var(--mark); background: #2a211c; }
 .qgrid button:active { transform: scale(.98); }
 .qgrid button[aria-pressed="true"] { border-color: var(--mark); background: #2a211c; }
-.qgrid button small { font-weight: 500; font-size: .8rem; color: #b9b5ae; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.qgrid button svg { width: 1.1em; height: 1.1em; flex: none; color: var(--mark); transition: transform .25s var(--ease); }
-.qgrid button:hover svg { transform: translateX(3px); }
+.qgrid button small, .qgrid a.route small { font-weight: 500; font-size: .8rem; color: #b9b5ae; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qgrid button svg, .qgrid a.route svg { width: 1.1em; height: 1.1em; flex: none; color: var(--mark); transition: transform .25s var(--ease); }
+.qgrid button:hover svg, .qgrid a.route:hover svg { transform: translateX(3px); }
 .qgrid-pains { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
 .qgrid button.best { background: var(--mark); color: var(--ink); border-color: var(--mark); }
 .qgrid button.best small, .qgrid button.best svg { color: var(--ink); }
@@ -448,3 +448,5 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: 
   .lang button { padding-inline: .5rem; }
   .top .btn.small { padding: .4rem .55rem; font-size: .85rem; }
 }
+.qgrid a.route { text-decoration: none; border-style: dashed; }
+.qgrid a.route small { margin-left: auto; }

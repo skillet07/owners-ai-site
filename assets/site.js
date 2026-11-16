@@ -321,12 +321,17 @@
       ru: { best: "Лучшие кейсы отрасли", casesOf: function (n) { return n + " " + plural(n, ["кейс", "кейса", "кейсов"]); },
             title: function (ind, pain) { return ind + " · " + (pain || "лучшие кейсы"); },
             filled: function (n) { return "Под эту задачу в отрасли " + (n === 1 ? "один кейс" : n + " кейса") + ". Ниже добавили самые сильные кейсы отрасли."; },
-            res: "Результат" },
+            res: "Результат", route: "как мы это решаем" },
       en: { best: "Best cases in this industry", casesOf: function (n) { return n + (n === 1 ? " case" : " cases"); },
             title: function (ind, pain) { return ind + " · " + (pain || "best cases"); },
             filled: function (n) { return "This industry has " + (n === 1 ? "one case" : n + " cases") + " for this task. We’ve added the strongest cases from the industry below."; },
-            res: "Result" }
+            res: "Result", route: "how we handle it" }
     };
+    // боли без кейсов на рынке: ведут на свою страницу услуги (проход персон 16.11)
+    var ROUTES = [
+      { href: "vtoroy-mozg.html", ru: "Ушёл человек, на котором всё держалось", en: "The person everything relied on has left" },
+      { href: "obuchenie.html", ru: "Уже внедряли – не прижилось", en: "We already tried AI – it didn’t stick" }
+    ];
     function plural(n, f) { var a = n % 10, b = n % 100; return a === 1 && b !== 11 ? f[0] : a >= 2 && a <= 4 && (b < 10 || b >= 20) ? f[1] : f[2]; }
     function L() { return NB.lang() === "en" ? "en" : "ru"; }
     function nums(h) { return h.replace(/([+−-]?\d[\d\u00a0 ]*(?:[.,]\d+)?\s?(?:%|×|раза?|times)?)/g, '<span class="n">$1</span>'); }
@@ -371,6 +376,9 @@
         var n = I.cases.filter(function (c) { return c.pains.indexOf(p.id) > -1; }).length;
         if (!n) return;
         html += '<button type="button" data-pain="' + p.id + '" aria-pressed="' + (p.id === st.pain) + '"><span>' + esc(p[l]) + "</span><small>" + T[l].casesOf(n) + "</small></button>";
+      });
+      ROUTES.forEach(function (r) {
+        html += '<a class="route" href="' + r.href + '"><span>' + r[l] + "</span><small>" + T[l].route + "</small>" + ARROW + "</a>";
       });
       q.querySelector('[data-list="pain"]').innerHTML = html;
     }
